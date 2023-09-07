@@ -1,15 +1,15 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import Form  from 'react-bootstrap/Form';
+import Form from "react-bootstrap/Form";
 
 const MyVerticallyCenteredModal = (props) => {
-    const [title,setTitle] = useState('')
-    const [description,setDescription] = useState('')
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
 
-    const updateTask = () => {
-        props.onHide()
-    }
+  const updateTask = () => {
+    props.onHide();
+  };
   return (
     <Modal
       {...props}
@@ -43,15 +43,18 @@ const MyVerticallyCenteredModal = (props) => {
               onChange={(e) => setDescription(e.target.value)}
             />
           </Form.Group>
-          
         </Form>
       </Modal.Body>
       <Modal.Footer>
         <div className="text-end">
-            <Button variant="primary" type="submit" onClick={(e) => updateTask(e)}>
-              Update Task
-            </Button>
-          </div>
+          <Button
+            variant="primary"
+            type="submit"
+            onClick={(e) => updateTask(e)}
+          >
+            Update Task
+          </Button>
+        </div>
       </Modal.Footer>
     </Modal>
   );
