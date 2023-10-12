@@ -5,7 +5,7 @@ export const TasksContext = createContext();
 const tasksReducer = (state, action) => {
   switch (action.type) {
     case "ADD_TASK":
-      const id = Math.random() * 100;
+      const id = Math.random() * 100 + "-" + Math.random() * 100;
       let task = { ...action.payload, id };
       return { ...state, taskList: [...state.taskList, task] };
     case "REMOVE_TASK":
@@ -15,7 +15,7 @@ const tasksReducer = (state, action) => {
       let updateList = state.taskList.map((task) =>
         task.id === action.payload.id ? action.payload : task
       );
-      return { ...state, taskList: [updateList] };
+      return { ...state, taskList: updateList };
     case "GET_TASKS":
       return state.taskList;
     case "SET_SELECTED_TASK":

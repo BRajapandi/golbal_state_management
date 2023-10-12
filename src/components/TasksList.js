@@ -2,9 +2,10 @@ import React, { useContext, useState } from "react";
 import { Button } from "react-bootstrap";
 import Table from "react-bootstrap/Table";
 import MyVerticallyCenteredModal from "./UpdateTask";
+import { TasksContext } from "./context/TasksContext";
 
 const TasksList = () => {
-  const { state, dispatch } = useContext(TasksList);
+  const { state, dispatch } = useContext(TasksContext);
   const updateTask = (task) => {
     console.log("update Task");
     setModalShow(true);
@@ -31,7 +32,7 @@ const TasksList = () => {
         <tbody>
           {state.taskList &&
             state.taskList.map((task, id) => (
-              <tr className="text-center" key={task.id}>
+              <tr className="text-center" key={id}>
                 <td>{id + 1}</td>
                 <td>{task.title}</td>
                 <td>{task.description}</td>

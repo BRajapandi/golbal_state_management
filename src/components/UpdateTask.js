@@ -16,10 +16,13 @@ const MyVerticallyCenteredModal = (props) => {
       setTitle(selectedTask.title);
       setDescription(selectedTask.description);
       setId(selectedTask.id);
+      console.log("ID use", selectedTask);
     }
   }, [selectedTask]);
-  const updateTask = () => {
+  const updateTask = (e) => {
+    e.preventDefault();
     props.onHide();
+    console.log("id", title, description, id);
     dispatch({ type: "UPDATE_TASK", payload: { title, description, id } });
   };
   return (
