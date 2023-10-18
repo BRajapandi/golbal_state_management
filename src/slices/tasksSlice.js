@@ -18,7 +18,7 @@ export const getTasksFromServer = createAsyncThunk(
       const jsonResponse = await response.json();
       return jsonResponse;
     } else {
-      return { error: "No Tasks Found" };
+      return rejectWithValue({ error: "No Tasks Found" });
     }
   }
 );
@@ -107,8 +107,7 @@ const tasksSlice = createSlice({
         state.tasksList = action.payload;
       })
       .addCase(getTasksFromServer.rejected, (state, action) => {
-        console.log("action", action);
-        state.error = action?.error?.message;
+        state.error = action.payload.error;
         state.isLoading = false;
         state.tasksList = [];
       })
